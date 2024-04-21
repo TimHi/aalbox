@@ -1,4 +1,4 @@
-curls.secret
+.env
 
 # Logs
 logs
