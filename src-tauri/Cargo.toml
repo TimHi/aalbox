@@ -1,7 +1,7 @@
 [package]
-name = "aalplayer"
+name = "Aalplayer"
 version = "0.0.0"
-description = "A Tauri App"
+description = "Yet another music player"
 authors = ["you"]
 edition = "2021"
 

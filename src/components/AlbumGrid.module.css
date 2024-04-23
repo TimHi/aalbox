@@ -1,0 +1,25 @@
+.grid {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.gridElement {
+	padding: 4px;
+	max-width: 200px;
+}
+
+.cover {
+	height: 200px;
+	width: 200px;
+	border-radius: 6px;
+}
+
+.ellipsis {
+	text-overflow: ellipsis;
+
+	/* Required for text-overflow to do anything */
+	white-space: nowrap;
+	overflow: hidden;
+}
