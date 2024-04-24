@@ -22,7 +22,9 @@ export function AlbumGrid() {
 						className={style.cover}
 						src={dataService.buildGetCoverUrl(album.coverArt, 200)}
 					/>
-					<p className={style.ellipsis}>{album.album}</p>
+					<a href={`/a/${album.id}`}>
+						<p className={style.ellipsis}>{album.album}</p>
+					</a>
 					<p className={style.ellipsis}>{album.artist}</p>
 				</div>
 			))}
