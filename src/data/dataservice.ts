@@ -8,14 +8,31 @@ export class DataService {
 		this.baseUrl = import.meta.env.VITE_SERVER;
 	}
 
-	private buildEndpoint(endpoint: string): string {
-		return `${this.baseUrl}${endpoint}.view?u=${import.meta.env.VITE_USER}&p=${
+	static buildEndpoint(endpoint: string): string {
+		return `${import.meta.env.VITE_SERVER}${endpoint}.view?u=${
+			import.meta.env.VITE_USER
+		}&p=${import.meta.env.VITE_PW}&v=1.16.1&c=app&f=json`;
+	}
+	static fixedEncodeURIComponent(str: string) {
+		return encodeURIComponent(str).replace(/[!'()*]/g, escape);
+	}
+
+	static buildEndpointWithParameters(
+		endpoint: string,
+		parameter: string
+	): string {
+		const url = `${import.meta.env.VITE_SERVER}${endpoint}.view?u=${
+			import.meta.env.VITE_USER
+		}&p=${DataService.fixedEncodeURIComponent(
 			import.meta.env.VITE_PW
-		}&v=1.16.1&c=app&f=json`;
+		)}&v=1.16.1&c=app&f=json${parameter}`;
+		return url;
 	}
 
 	async getArtists() {
-		const rawArtistResponse = await axios(this.buildEndpoint('getArtists'));
+		const rawArtistResponse = await axios(
+			DataService.buildEndpoint('getArtists')
+		);
 		const artists = rawArtistResponse.data[
 			'subsonic-response'
 		] as ArtistResponse;
@@ -23,7 +40,7 @@ export class DataService {
 	}
 
 	async getCoverArt(id: string) {
-		const url = `${this.buildEndpoint('getCoverArt')}&id=${id}`;
+		const url = `${DataService.buildEndpoint('getCoverArt')}&id=${id}`;
 		const rawCoverArt = await axios(url);
 		return rawCoverArt.data as string;
 	}
@@ -35,7 +52,7 @@ export class DataService {
 	 * @returns
 	 */
 	async getAlbums(offset: number, size: number): Promise<Album[]> {
-		const url = `${this.buildEndpoint(
+		const url = `${DataService.buildEndpoint(
 			'getAlbumList'
 		)}&size=${size}&offset=${offset}&type=alphabeticalByName`;
 		const rawAlbumResponse = await axios(url);
@@ -53,7 +70,7 @@ export class DataService {
 	 * @returns
 	 */
 	buildGetCoverUrl(id: string, size: number) {
-		return `${this.buildEndpoint('getCoverArt')}&id=${id}&size=${size}`;
+		return `${DataService.buildEndpoint('getCoverArt')}&id=${id}&size=${size}`;
 	}
 
 	async getFullAlbum(album: Album[]): Promise<FullAlbum[]> {
@@ -84,7 +101,7 @@ export class DataService {
 
 	//c478b22782dad27af10a55ed1135b0ba
 	async stream(id: string) {
-		const url = this.buildEndpoint('stream') + '&id=' + id;
+		const url = DataService.buildEndpoint('stream') + '&id=' + id;
 		const rawStreamResponse = await axios(url);
 		console.log(rawStreamResponse);
 	}

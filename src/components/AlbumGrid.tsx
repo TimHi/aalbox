@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react';
 import { DataService } from '../data/dataservice';
-import { Album } from '../model/album';
 import style from './AlbumGrid.module.css';
+import { useGetAlbumsQuery } from '../data/api';
 
 export function AlbumGrid() {
+	const { data, error } = useGetAlbumsQuery({
+		size: 20,
+		offset: 0,
+		type: 'alphabeticalByName ',
+	});
 	const dataService = new DataService();
-	const [albums, setAlbums] = useState<Album[]>([]);
-	useEffect(() => {
-		const fetchData = async () => {
-			const albumsData = await dataService.getAlbums(0, 50);
-			setAlbums(albumsData);
-		};
 
-		fetchData();
-	}, []);
-	return (
-		<div className={style.grid}>
-			{albums.map((album, index) => (
+	function renderData() {
+		if (data !== undefined) {
+			return data.map((album, index) => (
 				<div className={style.gridElement} key={index}>
 					<img
 						className={style.cover}
@@ -27,7 +23,11 @@ export function AlbumGrid() {
 					</a>
 					<p className={style.ellipsis}>{album.artist}</p>
 				</div>
-			))}
-		</div>
-	);
+			));
+		} else {
+			return <></>;
+		}
+	}
+
+	return <div className={style.grid}>{renderData()}</div>;
 }
