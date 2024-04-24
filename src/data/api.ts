@@ -23,9 +23,16 @@ export const subSonicApi = createApi({
 				return albumList.albumList.album;
 			},
 		}),
+		getCover: builder.query<string, string>({
+			query: (param) =>
+				`${DataService.buildEndpointWithParameters(
+					'getCoverArt',
+					`&id=${param}`
+				)}`,
+		}),
 	}),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAlbumsQuery } = subSonicApi;
+export const { useGetAlbumsQuery, useLazyGetCoverQuery } = subSonicApi;

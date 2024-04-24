@@ -1,6 +1,6 @@
 import { DataService } from '../data/dataservice';
 import style from './AlbumGrid.module.css';
-import { useGetAlbumsQuery } from '../data/api';
+import { useGetAlbumsQuery, useLazyGetCoverQuery } from '../data/api';
 
 export function AlbumGrid() {
 	const { data, error } = useGetAlbumsQuery({
@@ -8,6 +8,7 @@ export function AlbumGrid() {
 		offset: 0,
 		type: 'alphabeticalByName ',
 	});
+
 	const dataService = new DataService();
 
 	function renderData() {

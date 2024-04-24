@@ -11,7 +11,9 @@ export class DataService {
 	static buildEndpoint(endpoint: string): string {
 		return `${import.meta.env.VITE_SERVER}${endpoint}.view?u=${
 			import.meta.env.VITE_USER
-		}&p=${import.meta.env.VITE_PW}&v=1.16.1&c=app&f=json`;
+		}&p=${DataService.fixedEncodeURIComponent(
+			import.meta.env.VITE_PW
+		)}&v=1.16.1&c=app&f=json`;
 	}
 	static fixedEncodeURIComponent(str: string) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, escape);
