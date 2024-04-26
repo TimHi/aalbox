@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Album, AlbumsListResponse } from '../model/album';
+import {
+	Album,
+	AlbumDetail,
+	AlbumDetailResponse,
+	AlbumsListResponse,
+} from '../model/album';
 import { DataService } from './dataservice';
 
 export interface GetAlbumParameters {
@@ -23,6 +28,18 @@ export const subSonicApi = createApi({
 				return albumList.albumList.album;
 			},
 		}),
+		getAlbumDetails: builder.query<AlbumDetail, string>({
+			query: (param) =>
+				`${DataService.buildEndpointWithParameters(
+					'getAlbum',
+					`&id=${param}`
+				)}`,
+			transformResponse: (response: any) => {
+				console.log(response);
+				const album = response['subsonic-response'] as AlbumDetailResponse;
+				return album.album;
+			},
+		}),
 		getCover: builder.query<string, string>({
 			query: (param) =>
 				`${DataService.buildEndpointWithParameters(
@@ -35,4 +52,9 @@ export const subSonicApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetAlbumsQuery, useLazyGetCoverQuery } = subSonicApi;
+export const {
+	useGetAlbumsQuery,
+	useGetAlbumDetailsQuery,
+	useLazyGetAlbumDetailsQuery,
+	useLazyGetCoverQuery,
+} = subSonicApi;

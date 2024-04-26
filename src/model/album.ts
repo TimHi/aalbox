@@ -1,3 +1,6 @@
+import { Genre } from './genre';
+import { Song } from './song';
+
 export interface AlbumsListResponse {
 	status: string;
 	version: string;
@@ -6,6 +9,40 @@ export interface AlbumsListResponse {
 	openSubsonic: boolean;
 	albumList: AlbumList;
 }
+
+export interface AlbumDetailResponse {
+	status: string;
+	version: string;
+	type: string;
+	serverVersion: string;
+	openSubsonic: boolean;
+	album: AlbumDetail;
+}
+
+export interface AlbumDetail {
+	id: string;
+	name: string;
+	artist: string;
+	artistId: string;
+	coverArt: string;
+	songCount: number;
+	duration: number;
+	playCount: number;
+	created: string;
+	year: number;
+	genre: string;
+	played: string;
+	userRating: number;
+	genres: Genre[];
+	musicBrainzId: string;
+	isCompilation: boolean;
+	sortName: string;
+	discTitles: any[];
+	originalReleaseDate: OriginalReleaseDate;
+	song: Song[];
+}
+
+export interface OriginalReleaseDate {}
 
 export interface AlbumList {
 	album: Album[];

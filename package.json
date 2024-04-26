@@ -10,6 +10,12 @@
 		"tauri": "tauri dev"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.11.4",
+		"@emotion/styled": "^11.11.5",
+		"@fontsource/roboto": "^5.0.13",
+		"@mui/icons-material": "^5.15.15",
+		"@mui/material": "^5.15.15",
+		"@mui/styled-engine-sc": "^6.0.0-alpha.18",
 		"@reduxjs/toolkit": "^2.2.3",
 		"@tauri-apps/api": "^1",
 		"axios": "^1.6.8",
@@ -20,7 +26,8 @@
 		"react-h5-audio-player": "^3.9.1",
 		"react-redux": "^9.1.1",
 		"react-router-dom": "^6.23.0",
-		"sort-by": "^1.2.0"
+		"sort-by": "^1.2.0",
+		"styled-components": "^6.1.8"
 	},
 	"devDependencies": {
 		"@tauri-apps/cli": "^1",

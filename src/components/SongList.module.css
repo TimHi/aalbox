@@ -1,0 +1,9 @@
+.cover {
+	height: 50px;
+	width: 50px;
+	border-radius: 2px;
+}
+
+.row:hover {
+	background-color: #444444;
+}

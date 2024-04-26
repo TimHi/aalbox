@@ -1,0 +1,17 @@
+.header {
+	display: flex;
+	height: 300px;
+	background-color: rgb(83, 83, 83);
+	margin: 8px;
+	align-items: center;
+}
+.cover {
+	height: 250px;
+	width: 250px;
+
+	border-radius: 6px;
+}
+
+.details {
+	flex-direction: row;
+}
