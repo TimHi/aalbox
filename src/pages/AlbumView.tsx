@@ -6,7 +6,7 @@ import { SongList } from '../components/SongList';
 
 export function AlbumView() {
 	const { albumId } = useParams();
-	const { data, isLoading, isError } = useGetAlbumDetailsQuery(albumId ?? '');
+	const { data, isLoading } = useGetAlbumDetailsQuery(albumId ?? '');
 
 	if (isLoading) {
 		return <CircularProgress />;
@@ -14,10 +14,10 @@ export function AlbumView() {
 
 	if (data !== undefined) {
 		return (
-			<>
+			<div>
 				<Header data={data} typ='Album' />
 				<SongList data={data} />
-			</>
+			</div>
 		);
 	}
 

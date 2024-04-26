@@ -4,6 +4,10 @@
 	border-radius: 2px;
 }
 
+.row {
+	height: 60px;
+	align-items: center;
+}
 .row:hover {
-	background-color: #444444;
+	background-color: #353535;
 }

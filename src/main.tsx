@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { AlbumView } from './pages/AlbumView';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import { PlayerControls } from './components/PlayerControls';
 
 const router = createBrowserRouter([
 	{
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<RouterProvider router={router} />
+			<div className='container'>
+				<RouterProvider router={router} />
+			</div>
+			<div className='player'>
+				<PlayerControls />
+			</div>
 		</Provider>
 	</React.StrictMode>
 );
