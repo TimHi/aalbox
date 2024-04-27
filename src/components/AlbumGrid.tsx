@@ -1,38 +1,17 @@
-import { DataService } from '../data/dataservice';
 import style from './AlbumGrid.module.css';
 import { useGetAlbumsQuery } from '../data/api';
-import { useNavigate } from 'react-router-dom';
+import { AlbumRow } from './AlbumRow';
 export function AlbumGrid() {
-	const { data } = useGetAlbumsQuery({
-		size: 20,
+	const { data: frequentAlbums } = useGetAlbumsQuery({
+		size: 10,
 		offset: 0,
-		type: 'alphabeticalByName ',
+		type: 'frequent',
 	});
 
-	const dataService = new DataService();
-	const nav = useNavigate();
-	function renderData() {
-		if (data !== undefined) {
-			return data.map((album, index) => (
-				<div className={style.gridElement} key={index}>
-					<img
-						className={style.cover}
-						src={dataService.buildGetCoverUrl(album.coverArt, 200)}
-					/>
-					<a
-						onClick={() => {
-							nav(`/a/${album.id}`);
-						}}
-					>
-						<p className={style.ellipsis}>{album.album}</p>
-					</a>
-					<p className={style.ellipsis}>{album.artist}</p>
-				</div>
-			));
-		} else {
-			return <></>;
-		}
+	function renderFrequentAlbums() {
+		if (frequentAlbums !== undefined)
+			return <AlbumRow albums={frequentAlbums} title='Recently played' />;
 	}
 
-	return <div className={style.grid}>{renderData()}</div>;
+	return <div className={style.grid}>{renderFrequentAlbums()}</div>;
 }

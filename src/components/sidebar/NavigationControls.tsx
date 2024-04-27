@@ -20,14 +20,14 @@ export function NavigationController({ nav }: NavProps) {
 					nav(-1);
 				}}
 			>
-				<ArrowBackIosIcon />
+				<ArrowBackIosIcon color='secondary' />
 			</Button>
 			<Button
 				onClick={() => {
 					nav(1);
 				}}
 			>
-				<ArrowForwardIosIcon />
+				<ArrowForwardIosIcon color='secondary' />
 			</Button>
 		</div>
 	);
