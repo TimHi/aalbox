@@ -3,7 +3,7 @@ import { useGetAlbumsQuery } from '../data/api';
 import { AlbumRow } from './AlbumRow';
 export function AlbumGrid() {
 	const { data: frequentAlbums } = useGetAlbumsQuery({
-		size: 10,
+		size: 20,
 		offset: 0,
 		type: 'frequent',
 	});
