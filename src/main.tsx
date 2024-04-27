@@ -7,6 +7,7 @@ import { AlbumView } from './pages/AlbumView';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { PlayerControls } from './components/PlayerControls';
+import { SideBar } from './components/sidebar/Sidebar';
 
 const router = createBrowserRouter([
 	{
@@ -21,13 +22,15 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<div className='container'>
-				<RouterProvider router={router} />
-			</div>
-			<div className='player'>
-				<PlayerControls />
-			</div>
-		</Provider>
+		<div style={{ display: 'flex' }}>
+			<Provider store={store}>
+				<div className='container'>
+					<RouterProvider router={router} />
+				</div>
+				<div className='player'>
+					<PlayerControls />
+				</div>
+			</Provider>
+		</div>
 	</React.StrictMode>
 );

@@ -24,6 +24,7 @@ export const subSonicApi = createApi({
 					`&size=${param.size}&offset=${param.offset}&type=${param.type}`
 				)}`,
 			transformResponse: (response: any) => {
+				console.log(response);
 				const albumList = response['subsonic-response'] as AlbumsListResponse;
 				return albumList.albumList.album;
 			},
