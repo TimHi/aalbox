@@ -1,0 +1,13 @@
+.artistLink {
+	color: #bdbcbc;
+}
+
+.artistLink:hover {
+	color: #9c9c9c;
+}
+.albumLink {
+	color: #dadada;
+}
+.albumLink:hover {
+	color: #9c9c9c;
+}

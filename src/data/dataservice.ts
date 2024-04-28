@@ -105,6 +105,5 @@ export class DataService {
 	async stream(id: string) {
 		const url = DataService.buildEndpoint('stream') + '&id=' + id;
 		const rawStreamResponse = await axios(url);
-		console.log(rawStreamResponse);
 	}
 }

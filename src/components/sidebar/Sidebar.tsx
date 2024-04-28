@@ -1,13 +1,25 @@
 import { useNavigate } from 'react-router-dom';
 import { NavigationController } from './NavigationControls';
-import { Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 export function SideBar() {
 	const nav = useNavigate();
 
 	return (
-		<div style={{ width: 'fit-content' }}>
+		<Paper
+			style={{
+				backgroundColor: '#191919',
+				width: 'fit-content',
+				height: '100vh', // Set height to cover 100% of the viewport height
+				paddingRight: '12px',
+				paddingLeft: '12px',
+				marginRight: '8px',
+			}}
+		>
 			<Typography variant='h6'>Aalbox</Typography>
 			<NavigationController nav={nav} />
-		</div>
+			<Typography variant='h6'>Home</Typography>
+			<Typography variant='h6'>Search</Typography>
+			<Typography variant='h6'>Playlists</Typography>
+		</Paper>
 	);
 }

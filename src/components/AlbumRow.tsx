@@ -1,12 +1,12 @@
 import Typography from '@mui/material/Typography';
 import { DataService } from '../data/dataservice';
 import { Album } from '../model/album';
-import { Button, Paper } from '@mui/material';
+import { Button, IconButton, Paper } from '@mui/material';
 import { useState } from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from 'react-router-dom';
-
+import style from './AlbumRow.module.css';
 export interface AlbumRowProps {
 	albums: Album[];
 	title: string;
@@ -18,6 +18,40 @@ export function AlbumRow({ albums, title }: AlbumRowProps) {
 	const albumsPerRow = 6;
 	const maxIndex = Math.trunc(albums.length / albumsPerRow);
 	const nav = useNavigate();
+	const shouldRenderNavButtons = albums.length > albumsPerRow;
+
+	function renderNavButtons() {
+		if (shouldRenderNavButtons) {
+			return (
+				<>
+					<IconButton
+						disabled={rowIndex === 0}
+						onClick={() => {
+							let tRow = rowIndex;
+							setRowIndex(tRow - 1);
+						}}
+					>
+						<ArrowBackIosIcon
+							style={{ height: '16px', width: '16px' }}
+							color='primary'
+						/>
+					</IconButton>
+					<IconButton
+						disabled={rowIndex === maxIndex - 1}
+						onClick={() => {
+							let tRow = rowIndex;
+							setRowIndex(tRow + 1);
+						}}
+					>
+						<ArrowForwardIosIcon
+							style={{ height: '16px', width: '16px' }}
+							color='primary'
+						/>
+					</IconButton>
+				</>
+			);
+		}
+	}
 
 	function renderAlbums(index: number) {
 		const albumElements: JSX.Element[] = [];
@@ -44,17 +78,27 @@ export function AlbumRow({ albums, title }: AlbumRowProps) {
 							alt={album.title}
 						/>
 						<a
-							style={{ cursor: 'pointer' }}
+							className={style.albumLink}
 							color='#c1c1c1'
 							onClick={() => {
 								nav(`/a/${album.id}`);
 							}}
 						>
-							<Typography color={'white'} noWrap>
+							<Typography className={style.albumLink} noWrap>
 								{album.title}
 							</Typography>
 						</a>
-						<Typography color={'#828282'}>{album.artist}</Typography>
+						<a
+							className={style.artistLink}
+							color='#c1c1c1'
+							onClick={() => {
+								nav(`/artist/${album.artistId}`);
+							}}
+						>
+							<Typography className={style.artistLink}>
+								{album.artist}
+							</Typography>
+						</a>
 					</Paper>
 				</div>
 			);
@@ -78,30 +122,7 @@ export function AlbumRow({ albums, title }: AlbumRowProps) {
 				}}
 			>
 				<Typography variant='h6'>{title}</Typography>
-				<Button
-					disabled={rowIndex === 0}
-					onClick={() => {
-						let tRow = rowIndex;
-						setRowIndex(tRow - 1);
-					}}
-				>
-					<ArrowBackIosIcon
-						style={{ height: '16px', width: '16px' }}
-						color='primary'
-					/>
-				</Button>
-				<Button
-					disabled={rowIndex === maxIndex - 1}
-					onClick={() => {
-						let tRow = rowIndex;
-						setRowIndex(tRow + 1);
-					}}
-				>
-					<ArrowForwardIosIcon
-						style={{ height: '16px', width: '16px' }}
-						color='primary'
-					/>
-				</Button>
+				{renderNavButtons()}
 			</div>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{renderAlbums(rowIndex)}

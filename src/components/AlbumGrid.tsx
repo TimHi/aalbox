@@ -1,7 +1,7 @@
 import style from './AlbumGrid.module.css';
 import { useGetAlbumsQuery } from '../data/api';
 import { AlbumRow } from './AlbumRow';
-import { LinearProgress, Skeleton } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 export function AlbumGrid() {
 	const { data: frequentAlbums } = useGetAlbumsQuery({
 		size: 12,
@@ -38,7 +38,12 @@ export function AlbumGrid() {
 	}
 
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column' }}>
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+			}}
+		>
 			<div className={style.grid}>{renderFrequentAlbums()}</div>
 			<div className={style.grid}>{renderRecentlyAddedAlbums()}</div>
 			<div className={style.grid}>{renderNewestAlbums()}</div>

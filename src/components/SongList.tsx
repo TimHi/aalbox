@@ -13,7 +13,7 @@ export function SongList({ data }: SongListProps) {
 	const dispatch = useDispatch();
 	const dataService = new DataService();
 	const cover = dataService.buildGetCoverUrl(data.coverArt, 200);
-	console.log(data);
+
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			{data.song.map((song, index) => (

@@ -6,6 +6,7 @@ import {
 	AlbumsListResponse,
 } from '../model/album';
 import { DataService } from './dataservice';
+import { ArtistDetail, ArtistDetailResponse } from '../model/artist';
 
 export interface GetAlbumParameters {
 	offset: number;
@@ -24,7 +25,6 @@ export const subSonicApi = createApi({
 					`&size=${param.size}&offset=${param.offset}&type=${param.type}`
 				)}`,
 			transformResponse: (response: any) => {
-				console.log(response);
 				const albumList = response['subsonic-response'] as AlbumsListResponse;
 				return albumList.albumList.album;
 			},
@@ -36,7 +36,6 @@ export const subSonicApi = createApi({
 					`&id=${param}`
 				)}`,
 			transformResponse: (response: any) => {
-				console.log(response);
 				const album = response['subsonic-response'] as AlbumDetailResponse;
 				return album.album;
 			},
@@ -48,6 +47,17 @@ export const subSonicApi = createApi({
 					`&id=${param}`
 				)}`,
 		}),
+		getArtist: builder.query<ArtistDetail, string>({
+			query: (param) =>
+				`${DataService.buildEndpointWithParameters(
+					'getArtist',
+					`&id=${param}`
+				)}`,
+			transformResponse: (response: any) => {
+				const artist = response['subsonic-response'] as ArtistDetailResponse;
+				return artist.artist;
+			},
+		}),
 	}),
 });
 
@@ -58,4 +68,5 @@ export const {
 	useGetAlbumDetailsQuery,
 	useLazyGetAlbumDetailsQuery,
 	useLazyGetCoverQuery,
+	useGetArtistQuery,
 } = subSonicApi;
