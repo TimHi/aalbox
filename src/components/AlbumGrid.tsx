@@ -1,6 +1,7 @@
 import style from './AlbumGrid.module.css';
 import { useGetAlbumsQuery } from '../data/api';
 import { AlbumRow } from './AlbumRow';
+import { LinearProgress, Skeleton } from '@mui/material';
 export function AlbumGrid() {
 	const { data: frequentAlbums } = useGetAlbumsQuery({
 		size: 12,
@@ -23,17 +24,17 @@ export function AlbumGrid() {
 	function renderFrequentAlbums() {
 		if (frequentAlbums !== undefined)
 			return <AlbumRow albums={frequentAlbums} title='Frequently played' />;
-		else return <h1>Error fetching frequent played albums</h1>;
+		else return <LinearProgress />;
 	}
 	function renderRecentlyAddedAlbums() {
 		if (recentlyAdded !== undefined)
 			return <AlbumRow albums={recentlyAdded} title='Recently added' />;
-		else return <h1>Error fetching recently added albums</h1>;
+		else return <LinearProgress />;
 	}
 	function renderNewestAlbums() {
 		if (newestAdded !== undefined)
 			return <AlbumRow albums={newestAdded} title='Newly added' />;
-		else return <h1>Error fetching newest added albums</h1>;
+		else return <LinearProgress />;
 	}
 
 	return (

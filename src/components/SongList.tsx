@@ -14,39 +14,48 @@ export function SongList({ data }: SongListProps) {
 	const dataService = new DataService();
 	const cover = dataService.buildGetCoverUrl(data.coverArt, 200);
 	console.log(data);
-	return data.song.map((song, index) => (
-		<div
-			key={`song-${index}`}
-			style={{
-				display: 'flex',
-				alignItems: 'flex-start',
-			}}
-			className={style.row}
-			onDoubleClick={() => {
-				dispatch(setCurrentSong(song.id));
-			}}
-		>
-			{/* TODO: Handle XY/XYZ digits etc */}
-			<Typography style={{ display: 'flex', alignSelf: 'center' }} variant='h6'>
-				{index}
-			</Typography>
-			<img
-				style={{ display: 'flex', alignSelf: 'center' }}
-				className={style.cover}
-				src={cover}
-			/>
-			<div
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'flex-start',
-				}}
-			>
-				<Typography style={{ display: 'flex' }}>{song.title.trim()}</Typography>
-				<Typography style={{ display: 'flex' }}>
-					{formattedDurationFromSeconds(song.duration)}
-				</Typography>
-			</div>
+	return (
+		<div style={{ display: 'flex', flexDirection: 'column' }}>
+			{data.song.map((song, index) => (
+				<div
+					key={`song-${index}`}
+					style={{
+						display: 'flex',
+						alignItems: 'flex-start',
+					}}
+					className={style.row}
+					onDoubleClick={() => {
+						dispatch(setCurrentSong(song.id));
+					}}
+				>
+					{/* TODO: Handle XY/XYZ digits etc */}
+					<Typography
+						style={{ display: 'flex', alignSelf: 'center' }}
+						variant='h6'
+					>
+						{index}
+					</Typography>
+					<img
+						style={{ display: 'flex', alignSelf: 'center' }}
+						className={style.cover}
+						src={cover}
+					/>
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'flex-start',
+						}}
+					>
+						<Typography style={{ display: 'flex' }}>
+							{song.title.trim()}
+						</Typography>
+						<Typography style={{ display: 'flex' }}>
+							{formattedDurationFromSeconds(song.duration)}
+						</Typography>
+					</div>
+				</div>
+			))}
 		</div>
-	));
+	);
 }

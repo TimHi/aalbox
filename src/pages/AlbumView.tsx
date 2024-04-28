@@ -20,10 +20,12 @@ export function AlbumView() {
 
 	if (data !== undefined) {
 		return (
-			<div>
+			<div style={{ display: 'flex' }}>
 				<SideBar />
-				<Header data={data} typ='Album' />
-				<SongList data={data} />
+				<div style={{ flexDirection: 'column' }}>
+					<Header data={data} typ='Album' />
+					<SongList data={data} />
+				</div>
 			</div>
 		);
 	}
