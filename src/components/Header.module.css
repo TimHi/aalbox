@@ -25,9 +25,9 @@
 }
 
 .details {
-	width: 100vh;
 	display: flex;
 	flex-direction: column;
+	flex-wrap: nowrap;
 	margin-left: 12px;
 	align-items: flex-start;
 }

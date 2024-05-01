@@ -8,7 +8,7 @@ export function InfoBar() {
 				style={{
 					backgroundColor: '#191919',
 					width: '200px',
-					height: '100vh', // Set height to cover 100% of the viewport height
+					height: '100%', // Set height to cover 100% of the viewport height
 				}}
 			>
 				<Typography variant='h6'>Now Playing</Typography>

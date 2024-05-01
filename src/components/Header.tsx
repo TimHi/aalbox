@@ -17,7 +17,14 @@ export function Header({ data, typ }: HeaderProps) {
 				<img className={style.cover} src={cover} />
 				<div className={style.details}>
 					<Typography>{typ}</Typography>
-					<Typography variant='h3'>{data.name}</Typography>
+					<Typography
+						textAlign={'start'}
+						overflow={'hidden'}
+						textOverflow={'ellipsis'}
+						variant='h3'
+					>
+						{data.name}
+					</Typography>
 					<Typography variant='h4'>{data.artist}</Typography>
 					<Typography>
 						{data.year} • {data.songCount} songs •{' '}

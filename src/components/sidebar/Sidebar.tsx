@@ -9,7 +9,7 @@ export function SideBar() {
 			style={{
 				backgroundColor: '#191919',
 				width: 'fit-content',
-				height: '100vh', // Set height to cover 100% of the viewport height
+				height: '100%', // Set height to cover 100% of the viewport height
 				paddingRight: '12px',
 				paddingLeft: '12px',
 				marginRight: '8px',

@@ -12,7 +12,8 @@ import {
 	experimental_extendTheme as extendTheme,
 	Experimental_CssVarsProvider as CssVarsProvider,
 } from '@mui/material/styles';
-import { pink } from '@mui/material/colors';
+import Spectral from './assets/fonts/Spectral/Spectral-Regular.ttf';
+import Montserrat from './assets/fonts/Montserrat/static/Montserrat-Regular.ttf';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -29,6 +30,22 @@ const router = createBrowserRouter([
 ]);
 
 const theme = extendTheme({
+	typography: {
+		fontFamily: 'Montserrat',
+	},
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: `
+        @font-face {
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: local('Montserrat'), local('Montserrat-Regular'), url(${Montserrat}) format('ttf');
+          }
+      `,
+		},
+	},
 	colorSchemes: {
 		light: {
 			palette: {

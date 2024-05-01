@@ -4,6 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Header } from '../components/Header';
 import { SongList } from '../components/SongList';
 import { SideBar } from '../components/sidebar/Sidebar';
+import { InfoBar } from '../components/sidebar/InfoBar';
 
 export function AlbumView() {
 	const { albumId } = useParams();
@@ -26,6 +27,7 @@ export function AlbumView() {
 					<Header data={data} typ='Album' />
 					<SongList data={data} />
 				</div>
+				<InfoBar />
 			</div>
 		);
 	}
