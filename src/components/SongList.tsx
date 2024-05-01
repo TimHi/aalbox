@@ -15,7 +15,12 @@ export function SongList({ data }: SongListProps) {
 	const cover = dataService.buildGetCoverUrl(data.coverArt, 200);
 
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column' }}>
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+			}}
+		>
 			{data.song.map((song, index) => (
 				<div
 					key={`song-${index}`}

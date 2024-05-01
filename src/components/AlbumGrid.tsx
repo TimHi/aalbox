@@ -38,12 +38,7 @@ export function AlbumGrid() {
 	}
 
 	return (
-		<div
-			style={{
-				display: 'flex',
-				flexDirection: 'column',
-			}}
-		>
+		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<div className={style.grid}>{renderFrequentAlbums()}</div>
 			<div className={style.grid}>{renderRecentlyAddedAlbums()}</div>
 			<div className={style.grid}>{renderNewestAlbums()}</div>

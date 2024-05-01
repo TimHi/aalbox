@@ -21,11 +21,19 @@ export function AlbumView() {
 
 	if (data !== undefined) {
 		return (
-			<div style={{ display: 'flex' }}>
+			<div
+				style={{
+					display: 'flex',
+					height: '100%',
+					justifyContent: 'space-between',
+				}}
+			>
 				<SideBar />
-				<div style={{ flexDirection: 'column' }}>
-					<Header data={data} typ='Album' />
-					<SongList data={data} />
+				<div style={{ flex: '1' }}>
+					<div style={{ flexDirection: 'column' }}>
+						<Header data={data} typ='Album' />
+						<SongList data={data} />
+					</div>
 				</div>
 				<InfoBar />
 			</div>

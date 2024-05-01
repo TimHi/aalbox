@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { NavigationController } from './NavigationControls';
 import { Paper, Typography } from '@mui/material';
+import { Input } from '@mui/material';
 export function SideBar() {
 	const nav = useNavigate();
 
@@ -9,16 +10,17 @@ export function SideBar() {
 			style={{
 				backgroundColor: '#191919',
 				width: 'fit-content',
-				height: '100%', // Set height to cover 100% of the viewport height
-				paddingRight: '12px',
-				paddingLeft: '12px',
-				marginRight: '8px',
+				height: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
 			}}
 		>
-			<Typography variant='h6'>Aalbox</Typography>
+			<a onClick={() => nav('/')}>
+				<Typography variant='h6'>Aalbox</Typography>
+			</a>
 			<NavigationController nav={nav} />
-			<Typography variant='h6'>Home</Typography>
-			<Typography variant='h6'>Search</Typography>
+
 			<Typography variant='h6'>Playlists</Typography>
 		</Paper>
 	);

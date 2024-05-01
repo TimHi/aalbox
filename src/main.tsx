@@ -30,20 +30,36 @@ const router = createBrowserRouter([
 ]);
 
 const theme = extendTheme({
+	// typography: {
+	// 	fontFamily: 'Spectral, sans-serif',
+	// },
+	// components: {
+	// 	MuiCssBaseline: {
+	// 		styleOverrides: `
+	//     @font-face {
+	//       font-family: 'Spectral';
+	//       font-style: normal;
+	//       font-display: swap;
+	//       font-weight: 400;
+	//       src: local('Spectral'), local('Spectral'), url(${Spectral}) format('ttf');
+	//       }
+	//   `,
+	// 	},
+	// },
 	typography: {
-		fontFamily: 'Montserrat',
+		fontFamily: 'Montserrat, sans-serif',
 	},
 	components: {
 		MuiCssBaseline: {
 			styleOverrides: `
-        @font-face {
-          font-family: 'Montserrat';
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: local('Montserrat'), local('Montserrat-Regular'), url(${Montserrat}) format('ttf');
-          }
-      `,
+	    @font-face {
+	      font-family: 'Montserrat-Regular';
+	      font-style: normal;
+	      font-display: swap;
+	      font-weight: 400;
+	      src: local('Montserrat-Regular'), local('Montserrat-Regular'), url(${Montserrat}) format('ttf');
+	      }
+	  `,
 		},
 	},
 	colorSchemes: {

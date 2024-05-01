@@ -10,10 +10,7 @@ export interface NavProps {
 export function NavigationController({ nav }: NavProps) {
 	return (
 		<div
-			style={{
-				display: 'flex',
-				width: 'fit-content',
-			}}
+			style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
 		>
 			<Button
 				onClick={() => {
