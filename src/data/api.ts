@@ -65,6 +65,7 @@ export const subSonicApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
 	useGetAlbumsQuery,
+	useLazyGetAlbumsQuery,
 	useGetAlbumDetailsQuery,
 	useLazyGetAlbumDetailsQuery,
 	useLazyGetCoverQuery,

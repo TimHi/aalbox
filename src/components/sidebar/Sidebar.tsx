@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { NavigationController } from './NavigationControls';
 import { Paper, Typography } from '@mui/material';
-import { Input } from '@mui/material';
 export function SideBar() {
 	const nav = useNavigate();
 
@@ -20,7 +19,9 @@ export function SideBar() {
 				<Typography variant='h6'>Aalbox</Typography>
 			</a>
 			<NavigationController nav={nav} />
-
+			<a onClick={() => nav('/albums')}>
+				<Typography variant='h6'>Albums</Typography>
+			</a>
 			<Typography variant='h6'>Playlists</Typography>
 		</Paper>
 	);

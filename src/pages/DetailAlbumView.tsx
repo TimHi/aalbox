@@ -6,7 +6,7 @@ import { SongList } from '../components/SongList';
 import { SideBar } from '../components/sidebar/Sidebar';
 import { InfoBar } from '../components/sidebar/InfoBar';
 
-export function AlbumView() {
+export function DetailAlbumView() {
 	const { albumId } = useParams();
 	const { data, isLoading } = useGetAlbumDetailsQuery(albumId ?? '');
 

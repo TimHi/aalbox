@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './styles.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { AlbumView } from './pages/AlbumView';
+import { DetailAlbumView } from './pages/DetailAlbumView';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { PlayerControls } from './components/PlayerControls';
@@ -14,6 +14,7 @@ import {
 } from '@mui/material/styles';
 import Spectral from './assets/fonts/Spectral/Spectral-Regular.ttf';
 import Montserrat from './assets/fonts/Montserrat/static/Montserrat-Regular.ttf';
+import { AlbumsView } from './pages/Albums';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -21,11 +22,15 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/a/:albumId',
-		element: <AlbumView />,
+		element: <DetailAlbumView />,
 	},
 	{
 		path: '/artist/:artistId',
 		element: <ArtistView />,
+	},
+	{
+		path: '/albums',
+		element: <AlbumsView />,
 	},
 ]);
 
