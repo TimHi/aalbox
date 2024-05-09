@@ -1,19 +1,20 @@
 import { PayloadAction, createSelector, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
+import { Song } from '../model/song';
 
 interface PlayerState {
-	currentSong: string;
+	currentSong: Song | undefined;
 }
 
 const initialState: PlayerState = {
-	currentSong: '',
+	currentSong: undefined,
 };
 
 export const playerSlice = createSlice({
 	name: 'player',
 	initialState,
 	reducers: {
-		setCurrentSong: (state, action: PayloadAction<string>) => {
+		setCurrentSong: (state, action: PayloadAction<Song>) => {
 			state.currentSong = action.payload;
 		},
 	},

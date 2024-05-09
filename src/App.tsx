@@ -9,7 +9,6 @@ function App() {
 			style={{
 				display: 'flex',
 				flexDirection: 'row',
-				justifyContent: 'space-between',
 			}}
 		>
 			<SideBar />

@@ -37,7 +37,16 @@ export function AlbumCard({ album }: AlbumCardProps) {
 					nav(`/artist/${album.artistId}`);
 				}}
 			>
-				<Typography className={style.artistLink}>{album.artist}</Typography>
+				<Typography
+					style={{
+						overflow: 'hidden',
+						textOverflow: 'ellipsis',
+						whiteSpace: 'nowrap',
+					}}
+					className={style.artistLink}
+				>
+					{album.artist}
+				</Typography>
 			</a>
 		</Paper>
 	);

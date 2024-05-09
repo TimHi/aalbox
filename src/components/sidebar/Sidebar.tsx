@@ -22,6 +22,9 @@ export function SideBar() {
 			<a onClick={() => nav('/albums')}>
 				<Typography variant='h6'>Albums</Typography>
 			</a>
+			<a onClick={() => nav('/artists')}>
+				<Typography variant='h6'>Artists</Typography>
+			</a>
 			<Typography variant='h6'>Playlists</Typography>
 		</Paper>
 	);

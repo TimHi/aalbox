@@ -9,7 +9,7 @@ export function PlayerControls() {
 		<AudioPlayer
 			src={`${DataService.buildEndpointWithParameters(
 				'stream',
-				`&id=${currentSong}`
+				`&id=${currentSong?.id}`
 			)}`}
 			showSkipControls={true}
 			onPlay={(e) => console.log('onPlay')}

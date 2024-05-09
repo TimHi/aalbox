@@ -12,7 +12,6 @@ import {
 	experimental_extendTheme as extendTheme,
 	Experimental_CssVarsProvider as CssVarsProvider,
 } from '@mui/material/styles';
-import Spectral from './assets/fonts/Spectral/Spectral-Regular.ttf';
 import Montserrat from './assets/fonts/Montserrat/static/Montserrat-Regular.ttf';
 import { AlbumsView } from './pages/Albums';
 const router = createBrowserRouter([
@@ -30,6 +29,10 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/albums',
+		element: <AlbumsView />,
+	},
+	{
+		path: '/artists',
 		element: <AlbumsView />,
 	},
 ]);

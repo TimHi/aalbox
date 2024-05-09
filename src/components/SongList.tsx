@@ -30,7 +30,7 @@ export function SongList({ data }: SongListProps) {
 					}}
 					className={style.row}
 					onDoubleClick={() => {
-						dispatch(setCurrentSong(song.id));
+						dispatch(setCurrentSong(song));
 					}}
 				>
 					{/* TODO: Handle XY/XYZ digits etc */}
