@@ -3,7 +3,7 @@ import { useGetArtistQuery } from '../data/api';
 import { SideBar } from '../components/sidebar/Sidebar';
 import { CircularProgress, Container, Typography } from '@mui/material';
 import { AlbumRow } from '../components/AlbumRow';
-import { InfoBar } from '../components/sidebar/InfoBar';
+import { BasePage } from './BasePage';
 
 export function ArtistView() {
 	const { artistId } = useParams();
@@ -20,31 +20,12 @@ export function ArtistView() {
 
 	if (data !== undefined) {
 		return (
-			<div
-				style={{
-					display: 'flex',
-					height: '100%',
-					justifyContent: 'space-between',
-				}}
-			>
-				<SideBar />
-				<div style={{ flex: '1' }}>
-					<div
-						style={{
-							flex: '1',
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'flex-start',
-						}}
-					>
-						<Container sx={{ textAlign: 'left' }}>
-							<Typography variant='h2'>{data.name}</Typography>
-							<AlbumRow title='Albums' albums={data.album} />
-						</Container>
-					</div>
-				</div>
-				<InfoBar />
-			</div>
+			<BasePage>
+				<Container sx={{ textAlign: 'left' }}>
+					<Typography variant='h2'>{data.name}</Typography>
+					<AlbumRow title='Albums' albums={data.album} />
+				</Container>
+			</BasePage>
 		);
 	}
 

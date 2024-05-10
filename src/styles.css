@@ -18,6 +18,7 @@
 	min-height: 80vh;
 	padding-bottom: 85px;
 	width: 100%;
+	justify-content: 'space-between';
 }
 
 .player {

@@ -91,16 +91,11 @@ const theme = extendTheme({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<CssVarsProvider theme={theme}>
-			<div style={{ display: 'flex' }}>
-				<Provider store={store}>
-					<div className='container'>
-						<RouterProvider router={router} />
-					</div>
-					<div className='player'>
-						<PlayerControls />
-					</div>
-				</Provider>
-			</div>
+			<Provider store={store}>
+				<div className='container'>
+					<RouterProvider router={router} />
+				</div>
+			</Provider>
 		</CssVarsProvider>
 	</React.StrictMode>
 );

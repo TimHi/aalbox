@@ -3,8 +3,7 @@ import { useGetAlbumDetailsQuery } from '../data/api';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Header } from '../components/Header';
 import { SongList } from '../components/SongList';
-import { SideBar } from '../components/sidebar/Sidebar';
-import { InfoBar } from '../components/sidebar/InfoBar';
+import { BasePage } from './BasePage';
 
 export function DetailAlbumView() {
 	const { albumId } = useParams();
@@ -13,7 +12,6 @@ export function DetailAlbumView() {
 	if (isLoading) {
 		return (
 			<>
-				<SideBar />
 				<CircularProgress />
 			</>
 		);
@@ -21,22 +19,10 @@ export function DetailAlbumView() {
 
 	if (data !== undefined) {
 		return (
-			<div
-				style={{
-					display: 'flex',
-					height: '100%',
-					justifyContent: 'space-between',
-				}}
-			>
-				<SideBar />
-				<div style={{ flex: '1' }}>
-					<div style={{ flexDirection: 'column' }}>
-						<Header data={data} typ='Album' />
-						<SongList data={data} />
-					</div>
-				</div>
-				<InfoBar />
-			</div>
+			<BasePage>
+				<Header data={data} typ='Album' />
+				<SongList data={data} />
+			</BasePage>
 		);
 	}
 

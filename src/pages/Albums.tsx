@@ -5,7 +5,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from 'react';
 import { Button, Typography } from '@mui/material';
 import { AlbumCard } from '../components/AlbumCard';
-import { SideBar } from '../components/sidebar/Sidebar';
+import { BasePage } from './BasePage';
 
 export function AlbumsView() {
 	const [offset, setOffset] = useState<number>(0);
@@ -15,13 +15,7 @@ export function AlbumsView() {
 		type: 'alphabeticalByName',
 	});
 	return (
-		<div
-			style={{
-				display: 'flex',
-				height: '100%',
-			}}
-		>
-			<SideBar />
+		<BasePage>
 			<div style={{ flexDirection: 'column' }}>
 				<div
 					style={{
@@ -66,6 +60,6 @@ export function AlbumsView() {
 					})}
 				</div>
 			</div>
-		</div>
+		</BasePage>
 	);
 }

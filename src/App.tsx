@@ -1,20 +1,12 @@
 import 'react-h5-audio-player/lib/styles.css';
 import { AlbumGrid } from './components/AlbumGrid';
-import { SideBar } from './components/sidebar/Sidebar';
-import { InfoBar } from './components/sidebar/InfoBar';
+import { BasePage } from './pages/BasePage';
 
 function App() {
 	return (
-		<div
-			style={{
-				display: 'flex',
-				flexDirection: 'row',
-			}}
-		>
-			<SideBar />
+		<BasePage>
 			<AlbumGrid />
-			<InfoBar />
-		</div>
+		</BasePage>
 	);
 }
 
